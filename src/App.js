@@ -1,50 +1,25 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Person from "./components/Person";
+
+import UserInput from "./components/UserInput";
+import UserOutput from "./components/UserOutput";
+import userInput from "./components/UserInput";
 
 class App extends Component {
   state = {
-    persons: [
-      {
-        name: "Raffay Rafique",
-        age: 28
-      },
-      {
-        name: newName,
-        age: 26
-      }
-    ]
-  };
-  switchNameHandler = () => {
-    this.setState({
-      persons: [
-        {
-          name: "Raffay Rafique",
-          age: 23
-        }
-      ]
-    });
+    username: "Supermax"
   };
 
-  nameChangedHandler = event => {
-    this.setState({
-      persons: [
-        {
-          name: newName,
-          age: 21
-        }
-      ]
-    });
+  usernameChangedHandler = event => {
+    this.setState({ username: event.target.value });
   };
   render() {
     return (
-      <div className="App">
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+      <div>
+        <UserInput changed={this.usernameChangedHandler} />
+        <UserOutput userName="Raffay" />
+        <UserOutput userName="Zain" />
+        <UserOutput userName={this.state.username} />
       </div>
     );
   }
